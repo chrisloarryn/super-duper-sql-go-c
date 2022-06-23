@@ -1,7 +1,6 @@
 package invoiceheader
 
 import (
-	"database/sql"
 	"time"
 )
 
@@ -18,7 +17,7 @@ type Models []Model
 
 type Storage interface {
 	Migrate() error
-	CreateTx(*sql.Tx, *Model) error
+	//CreateTx(*sql.Tx, *Model) error
 	//Create(*Model) error
 	//Update(*Model) error
 	//GetAll() (Models, error)

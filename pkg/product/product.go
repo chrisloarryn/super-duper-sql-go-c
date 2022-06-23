@@ -42,11 +42,11 @@ type Models []Model
 
 type Storage interface {
 	Migrate() error
-	Create(*Model) error
-	Update(*Model) error
-	GetAll() (Models, error)
-	GetByID(uint) (*Model, error)
-	Delete(uint) error
+	//Create(*Model) error
+	//Update(*Model) error
+	//GetAll() (Models, error)
+	//GetByID(uint) (*Model, error)
+	//Delete(uint) error
 }
 
 type Service struct {
@@ -63,32 +63,32 @@ func (s *Service) Migrate() error {
 	return s.storage.Migrate()
 }
 
-// Create is used to create a product
-func (s *Service) Create(m *Model) error {
-	m.CreatedAt = time.Now()
-	return s.storage.Create(m)
-}
-
-// GetAll is used to get all products
-func (s *Service) GetAll() (Models, error) {
-	return s.storage.GetAll()
-}
-
-// GetByID is used to get one product
-func (s *Service) GetByID(id uint) (*Model, error) {
-	return s.storage.GetByID(id)
-}
-
-// Update is used to update a product
-func (s *Service) Update(m *Model) error {
-	if m.ID == 0 {
-		return ErrIDNotFound
-	}
-	m.UpdatedAt = time.Now()
-	return s.storage.Update(m)
-}
-
-// Delete is used to delete a product
-func (s *Service) Delete(id uint) error {
-	return s.storage.Delete(id)
-}
+//// Create is used to create a product
+//func (s *Service) Create(m *Model) error {
+//	m.CreatedAt = time.Now()
+//	return s.storage.Create(m)
+//}
+//
+//// GetAll is used to get all products
+//func (s *Service) GetAll() (Models, error) {
+//	return s.storage.GetAll()
+//}
+//
+//// GetByID is used to get one product
+//func (s *Service) GetByID(id uint) (*Model, error) {
+//	return s.storage.GetByID(id)
+//}
+//
+//// Update is used to update a product
+//func (s *Service) Update(m *Model) error {
+//	if m.ID == 0 {
+//		return ErrIDNotFound
+//	}
+//	m.UpdatedAt = time.Now()
+//	return s.storage.Update(m)
+//}
+//
+//// Delete is used to delete a product
+//func (s *Service) Delete(id uint) error {
+//	return s.storage.Delete(id)
+//}
