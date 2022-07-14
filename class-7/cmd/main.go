@@ -1,12 +1,12 @@
 package main
 
 import (
-	"crud_psql/authorization"
-	"crud_psql/handler"
-	"crud_psql/storage"
-	"fmt"
+	"crud_psql_7/authorization"
+	"crud_psql_7/handler"
+	"crud_psql_7/middleware"
+	"crud_psql_7/storage"
+	"github.com/labstack/echo/v4"
 	"log"
-	"net/http"
 )
 
 const (
@@ -19,14 +19,16 @@ func main() {
 		log.Fatalf("could not load certificates: %v", err)
 	}
 	store := storage.NewMemory()
-	mux := http.NewServeMux()
 
-	handler.RoutePerson(mux, &store)
-	handler.RouteLogin(mux, &store)
+	e := echo.New()
+	e.Use(middleware.Log)
+
+	handler.RoutePerson(e, &store)
+	handler.RouteLogin(e, &store)
 
 	log.Printf("Server initialized in port: %d", commonPort)
-	err = http.ListenAndServe(fmt.Sprintf(":%d", commonPort), mux)
-	if err != nil {
+
+	if err = e.Start(":8080"); err != nil {
 		log.Printf("error in the server")
 	}
 }

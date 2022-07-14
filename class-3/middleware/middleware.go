@@ -1,14 +1,19 @@
 package middleware
 
 import (
+	"crud_psql/authorization"
+	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 )
 
 const (
 	Authorization = "Authorization"
-	TokenHash     = "a-entire-securely-token"
+	Bearer        = "Bearer"
+	BlankSpace
+	TokenHash = "a-entire-securely-token"
 )
 
 func Log(f func(http.ResponseWriter, *http.Request)) func(http.ResponseWriter, *http.Request) {
@@ -33,17 +38,26 @@ func Authentication(f func(http.ResponseWriter, *http.Request)) func(http.Respon
 			log.Printf("operation took %g seconds", elapsed)
 		}()
 
-		if token := r.Header.Get(Authorization); token != TokenHash {
+		token := r.Header.Get(Authorization)
+
+		if strings.Contains(token, Bearer) {
+			str := strings.Split(token, BlankSpace)
+			token = strings.TrimSpace(str[1])
+		}
+
+		_, err := authorization.ValidateToken(token)
+		fmt.Println(Authorization, err)
+		if err != nil {
 			// return response 401
-			forbidden(w, r)
+			forbidden(w, r, err.Error())
 			return
 		}
 		f(w, r)
 	}
 }
 
-func forbidden(w http.ResponseWriter, r *http.Request) {
+func forbidden(w http.ResponseWriter, r *http.Request, msg string) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusForbidden)
-	w.Write([]byte("you do not have authorization to perform the action"))
+	w.Write([]byte(fmt.Sprintf(`{"message_type": "error" , "message": "%s", "data": null}`, msg)))
 }

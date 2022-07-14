@@ -4,7 +4,6 @@ import (
 	"crud_psql/model"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"net/http"
 	"strconv"
 )
@@ -31,8 +30,6 @@ func (p *person) create(w http.ResponseWriter, r *http.Request) {
 		responseJSON(w, http.StatusBadRequest, response)
 		return
 	}
-
-	fmt.Printf("%+v", data)
 
 	err = p.storage.Create(data)
 	if err != nil {
