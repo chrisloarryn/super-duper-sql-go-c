@@ -3,9 +3,9 @@ package main
 import (
 	"crud_psql_7/authorization"
 	"crud_psql_7/handler"
-	"crud_psql_7/middleware"
 	"crud_psql_7/storage"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"log"
 )
 
@@ -21,7 +21,9 @@ func main() {
 	store := storage.NewMemory()
 
 	e := echo.New()
-	e.Use(middleware.Log)
+	e.Use(middleware.Recover())
+	e.Use(middleware.Logger())
+	//e.Use(middleware.Log)
 
 	handler.RoutePerson(e, &store)
 	handler.RouteLogin(e, &store)
