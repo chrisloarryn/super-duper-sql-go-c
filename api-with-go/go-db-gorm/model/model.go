@@ -9,7 +9,7 @@ type Product struct {
 	gorm.Model
 	Name         string  `gorm:"type:varchar(100); not null"`
 	Observations *string `gorm:"type:varchar(100)"`
-	Price        int     `gorm:"not null"`
+	Price        int     `gorm:"type:;not null"`
 	InvoiceItems []InvoiceItem
 }
 
