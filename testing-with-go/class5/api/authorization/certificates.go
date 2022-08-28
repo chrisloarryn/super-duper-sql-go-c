@@ -2,10 +2,9 @@ package authorization
 
 import (
 	"crypto/rsa"
+	"github.com/golang-jwt/jwt"
 	"io/ioutil"
 	"sync"
-
-	"github.com/dgrijalva/jwt-go"
 )
 
 var (

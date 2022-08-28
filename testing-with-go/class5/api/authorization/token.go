@@ -2,10 +2,10 @@ package authorization
 
 import (
 	"errors"
+	"github.com/dgrijalva/jwt-go"
 	"time"
 
-	"github.com/EDteam/golang-testing/clase5/api/model"
-	"github.com/dgrijalva/jwt-go"
+	"class5/api/model"
 )
 
 // GenerateToken .
@@ -14,9 +14,12 @@ func GenerateToken(data *model.Login) (string, error) {
 		Email: data.Email,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 2).Unix(),
-			Issuer:    "EDteam",
+			Issuer:    "go.micro.srv.user",
 		},
 	}
+	//,			ExpiresAt: time.Now().Add(time.Hour * 2).Unix(),
+	//			Issuer:    "EDteam",
+	//		},
 
 	token := jwt.NewWithClaims(jwt.SigningMethodRS256, claim)
 	signedToken, err := token.SignedString(signKey)
