@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/EDteam/golang-testing/clase5/api/authorization"
+	"class5/api/authorization"
 	"github.com/labstack/echo"
 )
 

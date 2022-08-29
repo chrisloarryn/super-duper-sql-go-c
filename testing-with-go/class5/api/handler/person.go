@@ -1,11 +1,11 @@
 package handler
 
 import (
+	"class5/api/model"
 	"errors"
 	"net/http"
 	"strconv"
 
-	"github.com/EDteam/golang-testing/clase5/api/model"
 	"github.com/labstack/echo"
 )
 

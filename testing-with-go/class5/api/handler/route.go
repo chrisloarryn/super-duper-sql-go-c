@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/EDteam/golang-testing/clase5/api/middleware"
+	"class5/api/middleware"
 	"github.com/labstack/echo"
 )
 

@@ -6,9 +6,9 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 
-	"github.com/EDteam/golang-api/clase-7/authorization"
-	"github.com/EDteam/golang-api/clase-7/handler"
-	"github.com/EDteam/golang-api/clase-7/storage"
+	"class5/api/authorization"
+	"class5/api/handler"
+	"class5/api/storage"
 )
 
 func main() {

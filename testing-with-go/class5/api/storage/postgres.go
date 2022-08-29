@@ -1,14 +1,13 @@
 package storage
 
 import (
+	"class5/api/model"
 	"database/sql"
 	"errors"
 	"log"
 
 	// Import pq library
 	_ "github.com/lib/pq"
-
-	"github.com/EDteam/golang-testing/clase5/api/model"
 )
 
 // Psql .

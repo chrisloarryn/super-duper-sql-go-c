@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/EDteam/golang-testing/clase5/api/authorization"
-	"github.com/EDteam/golang-testing/clase5/api/model"
+	"class5/api/authorization"
+	"class5/api/model"
 )
 
 type login struct {

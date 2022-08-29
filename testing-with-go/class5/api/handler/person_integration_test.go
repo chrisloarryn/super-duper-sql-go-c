@@ -2,14 +2,14 @@ package handler_test
 
 import (
 	"bytes"
+	"class5/api/model"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
-	"github.com/EDteam/golang-testing/clase5/api/handler"
-	"github.com/EDteam/golang-testing/clase5/api/model"
-	"github.com/EDteam/golang-testing/clase5/api/storage"
+	"class5/api/handler"
+	"class5/api/storage"
 	"github.com/labstack/echo"
 )
 

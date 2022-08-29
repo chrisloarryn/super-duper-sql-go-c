@@ -1,9 +1,8 @@
 package handler
 
 import (
+	"class5/api/model"
 	"errors"
-
-	"github.com/EDteam/golang-testing/clase5/api/model"
 )
 
 type PersonStorageOKMock struct{}

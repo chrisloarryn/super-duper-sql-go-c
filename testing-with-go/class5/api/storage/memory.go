@@ -22,6 +22,10 @@ func NewMemory() Memory {
 	}
 }
 
+func (m *Memory) SetCurrentID(ID int) {
+	m.currentID = ID
+}
+
 // Create .
 func (m *Memory) Create(person *model.Person) error {
 	if person == nil {
